@@ -1,17 +1,19 @@
-# boot-ancient
+# boot-deps
 
-Wanna-be [lein-ancient](https://github.com/xsc/lein-ancient) for Boot.
+Wanna-be [lein-ancient](https://github.com/xsc/lein-ancient) and more for Boot.
 
-Provides the `ancient` task, which lists outdated dependencies
+Provides:
+- `ancient` task, which lists outdated dependencies
+- More to come, PRs welcome
 
-[![Clojars Project](http://clojars.org/boot-ancient/latest-version.svg)](http://clojars.org/boot-ancient)
+[![Clojars Project](http://clojars.org/boot-deps/latest-version.svg)](http://clojars.org/boot-deps)
 
 ## Usage
 
 This is mostly intended for Terminal usage as of now:
 
 ```clojure
-$ boot -d boot-ancient ancient
+$ boot -d boot-deps ancient
 Searching for outdated dependencies...
 Currently using [om "0.7.3"] but 0.8.0-beta3 is available
 Currently using [boot-garden "1.2.5"] but 1.2.5-1 is available
