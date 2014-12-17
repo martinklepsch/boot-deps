@@ -19,6 +19,14 @@ Currently using [om "0.7.3"] but 0.8.0-beta3 is available
 Currently using [boot-garden "1.2.5"] but 1.2.5-1 is available
 ```
 
+If you want to have `boot-deps` available globally you can add it to your `~/.profile.boot` like so:
+
+```clojure
+(set-env! :dependencies '[[boot-deps "0.1.2"]])
+(require '[boot-deps :refer [ancient]])
+```
+
+
 ## Options
 
 Currently there are no options but eventually boot-ancient will support similar options as lein-ancient.
