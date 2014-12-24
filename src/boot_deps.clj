@@ -10,20 +10,25 @@
   (atom true))
 
 (defn make-ancient-pod []
-  (pod/make-pod (assoc-in (boot/get-env) [:dependencies] '[[ancient-clj "0.2.1"]])))
+  (pod/make-pod (assoc (boot/get-env) :dependencies '[[ancient-clj "0.2.1"]])))
+
+(defn find-outdated [env]
+  (let [ancient-pod (make-ancient-pod)
+        {:keys [dependencies repositories]} env]
+    (pod/with-eval-in ancient-pod
+      (require '[ancient-clj.core :as ancient])
+      (let [deps ~(mapv #(list 'quote %) dependencies)
+            artifacts (map ancient/read-artifact deps)
+            outdated (map ancient/artifact-outdated? deps)]
+        (->> (map vector artifacts outdated)
+          (filter #(identity (second %))))))))
 
 (deftask ancient
   "Find outdated dependencies"
   []
-  (let [ancient-pod (make-ancient-pod)
-        deps        (boot/get-env :dependencies)]
-    (boot/with-pre-wrap fileset
-      (util/info "Searching for outdated dependencies...\n")
-      (pod/with-eval-in ancient-pod
-        (require 'ancient-clj.core)
-        (doseq [dep ~(mapv #(list 'quote %) deps)]
-          (let [artifact (ancient-clj.core/read-artifact dep)
-                outdated (ancient-clj.core/artifact-outdated? dep)]
-            (if outdated
-              (util/info "Currently using %s but %s is available\n" (pr-str (:form artifact)) (:version-string outdated))))))
-      fileset)))
+  (boot/with-pre-wrap fileset
+    (util/info "Searching for outdated dependencies...\n")
+    (doseq [[artifact new] (find-outdated (boot/get-env))]
+      (util/info "Currently using %s but %s is available\n"
+        (pr-str (:form artifact)) (:version-string new)))
+    fileset))
