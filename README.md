@@ -29,7 +29,11 @@ If you want to have `boot-deps` available globally you can add it to your `~/.pr
 
 ## Options
 
-Currently there are no options but eventually boot-ancient will support similar options as lein-ancient.
+```clojure
+[s snapshots  bool  "allow SNAPSHOT versions to be reported as new"
+ q qualified  bool  "allow alpha, beta, etc... versions to be reported as new"
+ a all        bool  "allow SNAPSHOT and qualified versions to be reported as new"]
+```
 
 ## License
 
