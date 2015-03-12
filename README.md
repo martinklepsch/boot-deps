@@ -22,7 +22,7 @@ Currently using [boot-garden "1.2.5"] but 1.2.5-1 is available
 If you want to have `boot-deps` available globally you can add it to your `~/.profile.boot` like so:
 
 ```clojure
-(set-env! :dependencies '[[boot-deps "0.1.2"]])
+(set-env! :dependencies '[[boot-deps "0.1.4"]])
 (require '[boot-deps :refer [ancient]])
 ```
 
