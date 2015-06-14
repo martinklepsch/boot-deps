@@ -7,7 +7,11 @@ Provides:
 - `latest` task, which shows latest version of a library
 - More to come, PRs welcome
 
-[![Clojars Project](http://clojars.org/boot-deps/latest-version.svg)](http://clojars.org/boot-deps)
+[](dependency)
+```clojure
+[boot-deps "0.1.6"] ;; latest release
+```
+[](/dependency)
 
 ## Usage
 
