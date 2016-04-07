@@ -1,6 +1,6 @@
 # boot-deps
 
-Wanna-be [lein-ancient](https://github.com/xsc/lein-ancient) and more for Boot.
+Wanna-be [lein-ancient](https://github.com/xsc/lein-ancient) and more for Boot. Also consider `boot show --updates` which is a built-in task listing dependencies with newer releases.
 
 Provides:
 - `ancient` task, which lists outdated dependencies
