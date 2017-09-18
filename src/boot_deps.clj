@@ -12,12 +12,22 @@
 (defn make-ancient-pod []                             ;; need slingshot b/c ancient-clj has :exclusions on it and clj-http needs it
   (pod/make-pod (assoc (boot/get-env) :dependencies '[[slingshot "0.12.2"] [ancient-clj "0.3.14"]])))
 
+(defn- skip-upgrade-check?
+  [[_ _ & opts]]
+  (let [{:keys [upgrade upgrade?]} (apply hash-map opts)]
+    (or (= upgrade false)
+        (= upgrade? false))))
+
 (defn find-outdated [env opts]
   (let [ancient-pod (make-ancient-pod)
         {:keys [dependencies repositories]} env]
     (pod/with-eval-in ancient-pod
       (require '[ancient-clj.core :as ancient])
-      (let [deps ~(mapv #(list 'quote %) dependencies)
+      (let [deps ~(into []
+                    (comp
+                      (remove skip-upgrade-check?)
+                      (map #(list 'quote %)))
+                    dependencies)
             artifacts (map ancient/read-artifact deps)
             outdated (map #(ancient/artifact-outdated? % ~opts) deps)]
         (->> (map vector artifacts outdated)
