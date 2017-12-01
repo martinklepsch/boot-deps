@@ -47,9 +47,11 @@
    a all        bool  "allow SNAPSHOT and qualified versions to be reported as new"]
   (boot/with-pre-wrap fileset
     (util/info "Searching for outdated dependencies...\n")
-    (let [opts {:snapshots? (or snapshots all)
-                :qualified? (or qualified all)}]
-      (doseq [[artifact new] (find-outdated (boot/get-env) opts)]
+    (let [env (boot/get-env)
+          opts {:snapshots? (or snapshots all)
+                :qualified? (or qualified all)
+                :repositories (:repositories env)}]
+      (doseq [[artifact new] (find-outdated env opts)]
         (util/info "Currently using %s but %s is available\n"
           (pr-str (:form artifact)) (:version-string new))))
     fileset))
@@ -66,7 +68,9 @@
       (*usage*))
     (boot/with-pre-wrap fileset
       (util/info (str "Searching for latest version of [" library "]...:"))
-      (let [opts {:snapshots? (or snapshots all)
-                  :qualified? (or qualified all)}]
+      (let [env (boot/get-env)
+            opts {:snapshots? (or snapshots all)
+                  :qualified? (or qualified all)
+                  :repositories (:repositories env)}]
         (util/info " %s\n" (find-latest (boot/get-env) library opts)))
       fileset)))
