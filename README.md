@@ -9,7 +9,7 @@ Provides:
 
 [](dependency)
 ```clojure
-[boot-deps "0.1.9"] ;; latest release
+[org.martinklepsch/boot-deps "0.2.0-SNAPSHOT"] ;; latest release
 ```
 [](/dependency)
 
@@ -30,8 +30,8 @@ Searching for latest version of [org.clojure/clojure]...: 1.7.0-RC1
 If you want to have `boot-deps` available globally you can add it to your `$BOOT_HOME/profile.boot` (usually `$BOOT_HOME` is set to `~/.boot`, see `boot -h` for details) like so:
 
 ```clojure
-(set-env! :dependencies '[[boot-deps "RELEASE"]])
-(require '[boot-deps :refer [ancient]])
+(set-env! :dependencies '[[org.martinklepsch/boot-deps "RELEASE"]])
+(require '[org.martinklepsch/boot-deps :refer [ancient]])
 ```
 
 

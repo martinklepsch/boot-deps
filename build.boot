@@ -9,7 +9,7 @@
 (bootlaces! +version+)
 
 (task-options!
-  pom {:project     'boot-deps
+  pom {:project     'org.martinklepsch/boot-deps
        :version     +version+
        :description "Boot task to find outdated dependencies."
        :url         "https://github.com/martinklepsch/boot-deps"

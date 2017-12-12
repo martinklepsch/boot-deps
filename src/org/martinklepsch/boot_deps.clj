@@ -1,4 +1,4 @@
-(ns boot-deps
+(ns org.martinklepsch.boot-deps
   {:boot/export-tasks true}
   (:require [clojure.java.io   :as io]
             [boot.core         :as boot :refer [deftask]]
