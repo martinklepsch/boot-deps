@@ -9,7 +9,7 @@ Provides:
 
 [](dependency)
 ```clojure
-[org.martinklepsch/boot-deps "0.2.0-SNAPSHOT"] ;; latest release
+[org.martinklepsch/boot-deps "0.1.10"] ;; latest release
 ```
 [](/dependency)
 
