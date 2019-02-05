@@ -10,7 +10,7 @@
   (atom true))
 
 (defn make-ancient-pod [] ;; need slingshot b/c ancient-clj has :exclusions on it and clj-http needs it
-  (pod/make-pod (assoc (boot/get-env) :dependencies '[[slingshot "0.12.2"] [ancient-clj "0.3.14"]])))
+  (pod/make-pod (assoc (boot/get-env) :dependencies '[[slingshot "0.12.2"] [ancient-clj "0.6.15"]])))
 
 (defn- skip-upgrade-check?
   [[_ _ & opts]]
