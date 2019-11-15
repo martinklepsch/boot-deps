@@ -31,7 +31,7 @@ If you want to have `boot-deps` available globally you can add it to your `$BOOT
 
 ```clojure
 (set-env! :dependencies '[[org.martinklepsch/boot-deps "RELEASE"]])
-(require '[org.martinklepsch/boot-deps :refer [ancient]])
+(require '[org.martinklepsch.boot-deps :refer [ancient]])
 ```
 
 
