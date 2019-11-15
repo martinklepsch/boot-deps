@@ -18,12 +18,12 @@ Provides:
 This is mostly intended for Terminal usage as of now:
 
 ```clojure
-$ boot -d boot-deps ancient
+$ boot -d org.martinklepsch/boot-deps ancient
 Searching for outdated dependencies...
 Currently using [om "0.7.3"] but 0.8.0-beta3 is available
 Currently using [boot-garden "1.2.5"] but 1.2.5-1 is available
 
-$ boot -d boot-deps latest -l org.clojure/clojure -q
+$ boot -d org.martinklepsch/boot-deps latest -l org.clojure/clojure -q
 Searching for latest version of [org.clojure/clojure]...: 1.7.0-RC1
 ```
 
